@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: events
+  jpa:
+    generate-ddl: "false"
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        envers:
+          revision_listener: gae.piaz.audit.envers.domain.audit.CustomRevisionListener
+        jdbc:
+          time_zone: UTC
+        format_sql: true
+    sql:
+      init:
+        mode: always
+
+logging:
+  level:
+    gae.piaz: TRACE
+
+
+
+  jpa:
+    generate-ddl: "false"
+    show-sql: false # set to true to see query logs
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        envers:
+          revision_listener: sia.labs.modulith.core.domain.audit.CustomRevisionListener
